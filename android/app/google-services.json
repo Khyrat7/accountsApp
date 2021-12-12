@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "504760515982",
+    "project_id": "accountsapp-1985c",
+    "storage_bucket": "accountsapp-1985c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504760515982:android:c25968c800a70fb3bf78df",
+        "android_client_info": {
+          "package_name": "com.accountsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504760515982-8s95f98ivdg7o2od435kdkqa35fj47b1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD51C9xUNShKrU4bO18l1D4f7eNKaZpSD4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504760515982-8s95f98ivdg7o2od435kdkqa35fj47b1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "504760515982-2kdejetho45a6ftfpnd7or9iumqudl2k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.khyrat.accountsApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
