@@ -16,6 +16,13 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {ThemeContext} from '../context/LayoutContext';
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
+import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
+
 import LoginTextInput from '../components/LoginTextInput';
 import LoginButton from '../components/LoginButton';
 import ImageIcon from '../components/ImageIcon';
@@ -24,10 +31,6 @@ import Images from '../constants/Images';
 import Constants from '../constants/PhoneDimentions';
 import LoginValidation from '../validation/LoginValidation';
 import DismissKeyboard from '../components/DismissKeyboard';
-import auth from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
-import {ThemeContext} from '../context/LayoutContext';
-import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
 
 export default LoginScreen = props => {
   // Props & Hooks
@@ -42,6 +45,31 @@ export default LoginScreen = props => {
   const [passwordMatchError, setPasswordMatchError] = useState('');
   const [login, setLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+
+  // Google signin
+  GoogleSignin.configure({
+    webClientId:
+      '504760515982-8s95f98ivdg7o2od435kdkqa35fj47b1.apps.googleusercontent.com',
+  });
+
+  async function onGoogleButtonPress() {
+    try {
+      //________________ Get the users ID token
+      const {idToken} = await GoogleSignin.signIn();
+
+      //________________ Create a Google credential with the token
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+      //________________ Sign-in the user with the credential
+      return auth()
+        .signInWithCredential(googleCredential)
+        .catch(e => {
+          console.log(e);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   // setting the navigation styling and content
   useLayoutEffect(() => {
@@ -364,7 +392,10 @@ export default LoginScreen = props => {
           <Text style={styles.text}>_________ OR _________</Text>
           <View style={styles.icons}>
             <ImageIcon imageSource={Images.facebook} />
-            <ImageIcon imageSource={Images.google} />
+            <ImageIcon
+              imageSource={Images.google}
+              onPress={onGoogleButtonPress}
+            />
             <ImageIcon imageSource={Images.apple} />
             <ImageIcon imageSource={Images.phone} />
           </View>
@@ -374,6 +405,7 @@ export default LoginScreen = props => {
             onPress={() => {
               onButtonPress();
             }}
+            color={themeColors.buttonColor}
           />
           <TouchableOpacity
             style={{width: Constants.screenWidth * 0.3, alignSelf: 'center'}}

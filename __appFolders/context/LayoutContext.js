@@ -37,6 +37,8 @@ export default LayoutContext = ({children}) => {
     placeholder: theme === 'dark' ? Colors.lightWhite : Colors.Darkgray,
     header: theme === 'dark' ? Colors.Darkgray : Colors.blue,
     buttonColor: theme === 'dark' ? Colors.Darkgray : Colors.blue,
+    section: theme === 'dark' ? Colors.Darkgray : Colors.lightWhite,
+    fieldFocused: theme === 'dark' ? '#757575' : '#bdbdbd',
     headerFont: Colors.white,
   };
 

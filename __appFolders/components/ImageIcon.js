@@ -5,7 +5,7 @@ import Colors from '../constants/Colors';
 import {ThemeContext} from '../context/LayoutContext';
 
 export default ImageIcon = props => {
-  const {imageSource} = props;
+  const {imageSource, onPress} = props;
   const {themeColors} = useContext(ThemeContext);
 
   // Styles
@@ -25,7 +25,7 @@ export default ImageIcon = props => {
   });
 
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image style={styles.image} source={imageSource} />
     </TouchableOpacity>
   );

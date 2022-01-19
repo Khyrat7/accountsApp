@@ -12,7 +12,7 @@ import {ThemeContext} from '../context/LayoutContext';
 import {RFValue, RFPercentage} from 'react-native-responsive-fontsize';
 
 export default LoginButton = props => {
-  const {isLoading, onPress, title} = props;
+  const {isLoading, onPress, title, color} = props;
   const {themeColors} = useContext(ThemeContext);
 
   // Styles
@@ -36,8 +36,8 @@ export default LoginButton = props => {
       alignSelf: 'center',
       flex: 1,
       width: '50%',
-      backgroundColor: themeColors.buttonColor,
-      borderRadius: PhoneDimentions.screenHeight * 0.05,
+      backgroundColor: color,
+      borderRadius: PhoneDimentions.screenHeight * 0.01,
     },
     title: {
       justifyContent: 'center',

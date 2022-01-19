@@ -7,6 +7,11 @@ import Colors from '../constants/Colors';
 import SplashScreen from '../screens/SplashScreen';
 import LoginScreen from '../screens/LoginScreen';
 import HomeScreen from '../screens/HomeScreen';
+import DrawerNavigator from './DrawerNavigator';
+import AccountsScreen from '../screens/AccountsScreen';
+import AddExpenceScreen from '../screens/AddExpenceScreen';
+import AddIncomeScreen from '../screens/AddIncomeScreen';
+import AccountScreen from '../screens/AccountScreen';
 
 const Stack = createStackNavigator();
 
@@ -45,8 +50,32 @@ const MainStackNavigator = () => {
 
         <Stack.Screen
           name="HomeScreen"
-          component={HomeScreen}
-          options={{headerShown: true, title: ' '}}
+          component={DrawerNavigator}
+          options={{headerShown: false, title: ' '}}
+        />
+
+        <Stack.Screen
+          name="AccountsScreen"
+          component={AccountsScreen}
+          options={{headerShown: true, title: '  '}}
+        />
+
+        <Stack.Screen
+          name="AddExpenceScreen"
+          component={AddExpenceScreen}
+          options={{headerShown: false, title: 'Add Expence'}}
+        />
+
+        <Stack.Screen
+          name="AddIncomeScreen"
+          component={AddIncomeScreen}
+          options={{headerShown: false, title: 'Add Income'}}
+        />
+
+        <Stack.Screen
+          name="AccountScreen"
+          component={AccountScreen}
+          options={{headerShown: true, title: 'Create New Account'}}
         />
       </Stack.Navigator>
     </NavigationContainer>
